@@ -1,0 +1,26 @@
+﻿@model MstrWrksStudio.ViewModels.ChannelListViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>My Channels</h2>
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th>#Id</th>
+            <th>#Channel</th>
+            <th>#Posts</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var channel in Model.Channel)
+        {
+            <tr class="Collapse">
+                <td>@channel.Id</td>
+                <td>@channel.Name</td>
+                <td>@Html.ActionLink(Model.Posts.Count.ToString(), "Posts", "Channel")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+    

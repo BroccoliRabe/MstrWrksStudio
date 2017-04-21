@@ -13,18 +13,21 @@ namespace MstrWrksStudio.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult ToDo()
         {
             ViewBag.Message = "Your application description page.";
-
-            return View();
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Login", "Account");
+            return View("Todo");
         }
 
-        public ActionResult Contact()
+        public ActionResult Channels()
         {
-            ViewBag.Message = "Your contact page.";
 
-            return View();
+            ViewBag.Message = "Your contact page.";
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Login", "Account");
+            return RedirectToAction("ChannelList", "Channel");
         }
     }
 }
